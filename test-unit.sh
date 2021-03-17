@@ -11,7 +11,8 @@ make clean
 make
 cd ..
 ./build/assignment-autotest/assignment-autotest
-if [ $? -eq 0 ]; then
+rc=$?
+if [ $rc -eq 0 ]; then
     which valgrind
     if [ $? -ne 0 ]; then
         echo "Please install valgrind with sudo apt-get install valgrind"
@@ -26,4 +27,6 @@ if [ $? -eq 0 ]; then
     else
         echo "Valgrind test succeeded"
     fi
+else
+    exit $rc
 fi
