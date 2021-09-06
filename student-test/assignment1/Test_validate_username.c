@@ -22,5 +22,14 @@ void test_validate_my_username()
      //TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
        
      //TEST_ASSERT_EQUAL_STRING(my_username(), malloc_username_from_conf_file());
-     TEST_ASSERT_EQUAL_STRING_MESSAGE(my_username(), malloc_username_from_conf_file(), "!Error:username mismatch");
+     
+     char *s1 = malloc_username_from_conf_file();
+     TEST_ASSERT_EQUAL_STRING_MESSAGE(my_username(), s1, "!Error:username mismatch");
+     free(s1);      
 }
+
+
+
+     
+    
+     
