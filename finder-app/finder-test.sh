@@ -50,12 +50,13 @@ fi
 #using writer script within for loop 1 to NUMFILES
 
 #echo "Removing the old writer utility and compiling as a native application"
-#make clean
-#make
+make clean
+make
 
 for i in $( seq 1 $NUMFILES)
 do
-	./writer.sh "$WRITEDIR/${username}$i.txt" "$WRITESTR"
+	#./writer.sh "$WRITEDIR/${username}$i.txt" "$WRITESTR"
+	./writer "$WRITEDIR/${username}$i.txt" "$WRITESTR"
 done
 
 #now using finder script to find number of files and number of matching matching lines with WRITESTR at WRITEDIR directory  

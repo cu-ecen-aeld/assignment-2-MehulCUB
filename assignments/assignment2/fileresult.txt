@@ -1,0 +1,7 @@
+**output of the “file” utility after building writer with CROSS_COMPILE 
+
+command for build: make CROSS_COMPILE=aarch64-none-linux-gnu-
+
+file writer
+writer: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, for GNU/Linux 3.7.0, with debug_info, not stripped
+
