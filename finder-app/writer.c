@@ -18,8 +18,7 @@ Author : Mehul Patel
 #include <unistd.h>
 #include <sys/types.h>
 #include <errno.h>
- 
-#define SLEN 500	//length for file path- name 
+#include <limits.h>
 
 int main(int argc, char* argv[])
 {
@@ -44,7 +43,7 @@ int main(int argc, char* argv[])
 	printf("writefile %s\n", writefile);
 	printf("writestr  %s\n", writestr);
 	
-	char filepath[SLEN]; 
+	char filepath[PATH_MAX]; 
 	strcpy(filepath,writefile); 
 	
 	fd = open(filepath, O_CREAT | O_RDWR |O_TRUNC,0644);	//open/create file for write
@@ -55,13 +54,13 @@ int main(int argc, char* argv[])
 		//if directory if not present create the directory including parent directory 
 		if(errno == ENOENT)	//directory in pathname does not exist 
 		{
-			char filename[SLEN];
+			char filename[PATH_MAX];
 			strcpy(filename,basename(writefile));	// get file name
 			 
-			char dir_path[SLEN];
+			char dir_path[PATH_MAX];
 			strcpy(dir_path,dirname(writefile));	// get directory path 
 			  
-			char cmd[SLEN+10];
+			char cmd[PATH_MAX+10]; 		 //extra byte length for mkdir system call  
 			sprintf(cmd, "mkdir -p %s", dir_path);  //create directory including parent directory 
 			system(cmd); 
 	

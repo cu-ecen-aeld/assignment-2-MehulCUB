@@ -27,21 +27,12 @@ then
     exit 1
 fi
 
-#variables for count 
-x=0 #number of files in given directory
-y=0 #number of total matching lines
-
-#if number of files at at given path 
-# find: find number of files in given directory or sub-directories at given path,  wc - l for count 
-#x=$( find $FILESDIR -type f | wc -l ) 
-
 #if number of files with matching strings at given path
 # find: find number of files in given directory or sub-directories at given path,  wc - l for count
-x=$(grep -r "${SEARCHSTR}" "${FILESDIR}" --files-with-matches | wc -l)
+x=$(grep -rcl "${SEARCHSTR}" "${FILESDIR}"| wc -l)
 
 # find total matching lines
 # grep : check if matching pattern/string, flag -r recurssive search  
-
 y=$(grep -r "${SEARCHSTR}" "${FILESDIR}" | wc -l)
 
 echo The number of files are ${x} and the number of matching lines are ${y}
